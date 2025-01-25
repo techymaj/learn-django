@@ -1,4 +1,5 @@
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.urls import reverse
 
 from . import models
 
@@ -7,7 +8,11 @@ from . import models
 
 def monthly_challenge(request, month, day):
     if day == 0:
-        return HttpResponseRedirect(f"/challenges/december/31")
+        redirect_month = "december"
+        redirect_day = 31
+        redirect_path = reverse("reversed-", args=[redirect_month, redirect_day])
+        print(f"Redirect path: {redirect_path}")
+        return HttpResponseRedirect(redirect_path)
     for m, days in models.months.items():
         if m.casefold() == month.casefold():
             return HttpResponse(
