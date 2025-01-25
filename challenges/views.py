@@ -1,4 +1,4 @@
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 
 from . import models
 
@@ -6,6 +6,8 @@ from . import models
 # Create your views here.
 
 def monthly_challenge(request, month, day):
+    if day == 0:
+        return HttpResponseRedirect(f"/challenges/december/31")
     for m, days in models.months.items():
         if m.casefold() == month.casefold():
             return HttpResponse(
