@@ -17,12 +17,14 @@ def base(request):
 
 
 def index(request):
-    li = []
+    challenges = {}
     for month, _ in models.months.items():
         # challenge/month
         redirect_path = reverse("reversed-", args=[month])
-        li.append(f"<li><a href={redirect_path}>{month}</a></li>")
-    return HttpResponse(f"<ol>{"".join(li)}</ol>")
+        challenges.update({month: redirect_path})
+    return render(request, "challenges/challenges.html", {
+        "challenges": challenges,
+    })
 
 
 def monthly_challenge(request, month):
