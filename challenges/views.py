@@ -1,4 +1,5 @@
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.template.loader import render_to_string
 from django.urls import reverse
 
 from . import models
@@ -6,10 +7,15 @@ from . import models
 
 # Create your views here.
 
+def base(request):
+    template = render_to_string("challenges/index.html")
+    return HttpResponse(template)
+
 
 def index(request):
     li = []
     for month, _ in models.months.items():
+        # challenge/month
         redirect_path = reverse("reversed-", args=[month])
         li.append(f"<li><a href={redirect_path}>{month}</a></li>")
     return HttpResponse(f"<ol>{"".join(li)}</ol>")
