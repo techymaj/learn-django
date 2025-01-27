@@ -1,16 +1,14 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ name|title }}</title>
-</head>
-<body>
-<h1>I am {{ name|title }}</h1>
-{% for var in arr %}
-    {% if var < 4 %}
-        <p>Baby: {{ var }}</p>
-    {% endif %}
-{% endfor %}
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block page_title %}
+    {{ name|title }}
+{% endblock page_title %}
+
+{% block content %}
+    <h1>I am {{ name|title }}</h1>
+    {% for var in arr %}
+        {% if var < 4 %}
+            <p>Baby: {{ var }}</p>
+        {% endif %}
+    {% endfor %}
+{% endblock content %}
