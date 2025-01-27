@@ -11,7 +11,7 @@ from . import models
 def base(request):
     # template = render_to_string("challenges/index.html")
     return render(request, "challenges/index.html", {
-        "name": "Majaliwa M. Wilfried",
+        "name": "majaliwa m. Wilfried",
         "arr": [5, 4, 3, 2, 1]
     })
 
