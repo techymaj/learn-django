@@ -1,6 +1,5 @@
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.http import HttpResponse, Http404
 from django.shortcuts import render
-from django.template.loader import render_to_string
 from django.urls import reverse
 
 from . import models
@@ -9,7 +8,6 @@ from . import models
 # Create your views here.
 
 def base(request):
-    # template = render_to_string("challenges/index.html")
     return render(request, "challenges/index.html", {
         "name": "majaliwa m. Wilfried",
         "arr": [5, 4, 3, 2, 1]
@@ -36,4 +34,4 @@ def monthly_challenge(request, month):
                     <p>It has {days} days</p>
                 """)
     else:
-        return HttpResponseNotFound("Error:")
+        raise Http404("404.html")
