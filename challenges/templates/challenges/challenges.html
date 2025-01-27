@@ -3,6 +3,8 @@
     All Challenges
 {% endblock page_title %}
 {% block content %}
+    {% include "challenges/partials/header.html" %}
+
     <ol>
         {% for month, path in challenges.items %}
             <li><a href="{{ path }}">{{ month }}</a></li>

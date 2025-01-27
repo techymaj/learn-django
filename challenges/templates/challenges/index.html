@@ -5,6 +5,8 @@
 {% endblock page_title %}
 
 {% block content %}
+    {% include "challenges/partials/header.html" %}
+
     <h1>I am {{ name|title }}</h1>
     {% for var in arr %}
         {% if var < 4 %}
