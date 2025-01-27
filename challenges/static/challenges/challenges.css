@@ -1,4 +1,7 @@
 li {
     list-style: none;
+}
+
+p {
     color: red;
 }
