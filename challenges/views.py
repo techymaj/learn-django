@@ -1,4 +1,5 @@
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.urls import reverse
 
@@ -8,8 +9,8 @@ from . import models
 # Create your views here.
 
 def base(request):
-    template = render_to_string("challenges/index.html")
-    return HttpResponse(template)
+    # template = render_to_string("challenges/index.html")
+    return render(request, "challenges/index.html")
 
 
 def index(request):
